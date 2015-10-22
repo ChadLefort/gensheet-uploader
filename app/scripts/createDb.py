@@ -10,11 +10,12 @@ from imports.sql.populate import populateTables
 
 # Database connection to get hull numbers.
 host = os.environ.get('PY_SCRIPT_DBHOST')
+port = int(os.environ.get('PY_SCRIPT_DBPORT'))
 user = os.environ.get('PY_SCRIPT_DBUSER')
 passwd = os.environ.get('PY_SCRIPT_DBPASSWORD')
 db = os.environ.get('PY_SCRIPT_DB')
 
-hullsDb = MySQLdb.connect(host = host, user = user,  passwd = passwd, db = db, local_infile = 1)
+hullsDb = MySQLdb.connect(host = host, port = port, user = user,  passwd = passwd, db = db, local_infile = 1)
 curOne = hullsDb.cursor()
 
 # Get hull list data.
@@ -35,7 +36,7 @@ if not os.path.exists(directory):
 breakIntoCSV(directory, 'public/uploads/' + gensheet)
 
 # Database connection to create new database.
-hullNumberDb = MySQLdb.connect(host = host, user = user,  passwd = passwd, local_infile = 1)
+hullNumberDb = MySQLdb.connect(host = host, port = port, user = user,  passwd = passwd, local_infile = 1)
 curTwo = hullNumberDb.cursor()
 
 query = 'CREATE DATABASE IF NOT EXISTS `%s`;'

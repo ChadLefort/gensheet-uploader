@@ -1,0 +1,65 @@
+<div class="container">
+    {{#ifCond data.0.name '==' null}}
+        <h1>{{data.0.number}}
+            - No Name</h1>
+        {{else}}
+        <h1>{{data.0.number}}
+            -
+            {{data.0.name}}</h1>
+    {{/ifCond}}
+    <hr/>
+    <div class="row">
+        <div class="col-md-6" style="padding-bottom: 20px">
+            {{#ifCond data.0.image '==' 'placeholder.png'}}
+                <img class="img-rounded img-responsive" src="/img/placeholder.png">
+                {{else}}
+                <img class="img-rounded img-responsive" src="/uploads/{{data.0.image}}">
+            {{/ifCond}}
+        </div>
+
+        <div class="col-md-6">
+            <div style="padding-bottom: 20px">
+                <a class="btn btn-default" href="/uploads/{{data.0.gensheet}}">Download Gensheet</a>
+            </div>
+            <div style="padding-bottom: 20px">
+                <a class="btn btn-default" href="/hull/{{data.0.number}}/gensheet/AIS">View Gensheet</a>
+            </div>
+            <div style="padding-bottom: 20px">
+                <a class="btn btn-default" href="/hull/{{data.0.number}}/iolist">Download IO List</a>
+            </div>
+            <div style="padding-bottom: 20px">
+                <button class="btn btn-danger" data-target="#deleteModal" data-toggle="modal">Delete Hull</button>
+            </div>
+            <p>
+                <b style="padding-right: 10px">Date Added
+                </b>
+                {{prettifyDate data.0.timestamp}}</p>
+        </div>
+    </div>
+    <!--deleteModal-->
+    <div aria-hidden="true" aria-labelledby="deleteModalLabel" class="modal fade" id="deleteModal" role="dialog" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button class="close" data-dismiss="modal" type="button">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title" id="deleteModalLabel">Delete Hull
+                        {{data.0.number}}?</h4>
+                </div>
+                <div class="modal-body">
+                    <b>Are you sure you want to delete Hull
+                        {{data.0.number}}?</b>
+                </div>
+                <div class="modal-footer">
+                    <form action="/hull/{{data.0.number}}?_csrf={{csrf}}" id="search" method="post">
+                        <button class="btn btn-danger" type="submit">Yes</button>
+                        <button class="btn btn-default" data-dismiss="modal" type="button">Cancel</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--deleteModal-->
+</div>

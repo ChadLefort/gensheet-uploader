@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="form-horizontal">
+        <h1>Upload a Gensheet</h1>
+        <hr/>
+        {{#if alert}}
+            <div class="row">
+                <div class="alert alert-danger alert-dismissible" role="alert">
+                    <button class="close" data-dismiss="alert" type="button">
+                        <span aria-hidden="true">&times;</span>
+                        <span class="sr-only">Close</span>
+                    </button>
+                    {{#ifCond alert.length '==' 1}}
+                        <strong>Error!</strong><br>
+                        {{else}}
+                        <strong>Errors!</strong><br>
+                    {{/ifCond}}
+                    {{#each alert}}
+                        {{error}}<br>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+
+        <form action="/?_csrf={{csrf}}" enctype="multipart/form-data" id="gensheetUploader" method="post">
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Hull Number">Hull Number</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="hullNumber" name="hullNumber" placeholder="Enter Hull Number" type="number" value="{{postback.number}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Hull Name">Hull Name</label>
+                <div class="col-md-4">
+                    <input class="form-control" id="hullName" name="hullName" placeholder="Enter Hull Name" type="text" value="{{postback.name}}">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Gensheet">Gensheet</label>
+                <div class="col-md-10">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <span class="btn btn-default btn-file">
+                            <span class="fileinput-new">Select Gensheet</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input class="form-control" id="gensheet" name="gensheet" type="file">
+                        </span>
+                        <span class="fileinput-filename"></span>
+                        <a class="close fileinput-exists" data-dismiss="fileinput" href="#" style="float: none">&times;</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label col-md-2" for="Gensheet">Image</label>
+                <div class="col-md-10">
+                    <div class="fileinput fileinput-new" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
+                            <img src="/img/placeholder.png">
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"></div>
+                        <div>
+                            <span class="btn btn-default btn-file">
+                                <span class="fileinput-new">Select image</span>
+                                <span class="fileinput-exists">Change</span>
+                                <input id="image" name="image" type="file">
+                            </span>
+                            <a class="btn btn-default fileinput-exists" data-dismiss="fileinput" href="#">Remove</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input class="btn btn-default" type="submit" value="Upload"/>
+                    <a class="btn btn-danger" href="/">Cancel</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

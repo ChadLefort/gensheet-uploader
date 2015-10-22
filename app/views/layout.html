@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="google" value="notranslate">
+<meta name="csrf-token" content="{{csrf}}">
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/jasny-bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrapValidator.min.css">
+    <link rel="stylesheet" href="/css/site.css">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="jumbotron hidden-xs">
+        <img src="/img/logo.png">
+    </div>
+    <div class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div class="visible-xs">
+                    <a class="navbar-brand" href="/">
+                        <i class="fa fa-anchor fa-lg pull-left" style="padding-top: 3px"></i> Gensheet Uploader
+                    </a>
+                </div>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li {{#ifCond title '==' 'Gensheet Uploader'}} class="active" {{else}} class="" {{/ifCond}}><a href="/">Upload</a></li>
+                    <li {{#ifCond title '==' 'Hull List'}} class="active" {{else}} class="" {{/ifCond}}><a href="/database/page/1">Database</a></li>
+                    <li {{#ifCond title '==' 'Help'}} class="active" {{else}} class="" {{/ifCond}}><a href="/help">Help</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="body-content">
+        {{{body}}}
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <p class="text-muted">Custom Built by Chad Lefort</p>
+        </div>
+    </div>
+
+    <div class="scrollup" href="#"><i class="fa fa-caret-square-o-up fa-3x"></i></div>
+
+    <script src="/js/jquery-2.1.1.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/jasny-bootstrap.min.js"></script>
+    <script src="/js/bootstrapValidator.min.js"></script>
+    <script src="/js/typeahead.min.js"></script>
+    <script src="/js/site.js"></script>
+</body>
+
+</html>

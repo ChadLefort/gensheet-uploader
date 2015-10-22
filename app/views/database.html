@@ -1,0 +1,67 @@
+<div class="container">
+    <div class="row">
+        <div class="container">
+            <div class="pull-left">
+                <h1>{{title}}</h1>
+            </div>
+            <div class="col-md-4 pull-right" style="padding-top:20px">
+                <form action="/database/search?_csrf={{csrf}}" id="search" method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input autocomplete="off" class="typeahead tt-query" id="search" name="typeahead" placeholder="Search" spellcheck="false" type="text">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">Go!</button>
+                            </span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <hr/>
+    {{#if successMessages}}
+        <div class="alert alert-dismissable alert-success">
+            <button class="close" data-dismiss="alert" type="button">
+                <span aria-hidden="true">&times;</span>
+                <span class="sr-only">Close</span>
+            </button>
+            <strong>Success!</strong><br>
+            {{successMessages}}
+        </div>
+    {{/if}}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h3 class="panel-title">Hull Number & Name</h3>
+        </div>
+        <table class="table table-hover table-striped table-bordered">
+            <tbody>
+                {{#each data}}
+                    <tr>
+                        {{#ifCond name '==' null}}
+                            <td>
+                                <a href="/hull/{{number}}">{{number}}
+                                    - No Name</a>
+                            </td>
+                            {{else}}
+                            <td>
+                                <a href="/hull/{{number}}">{{number}}
+                                    -
+                                    {{name}}</a>
+                            </td>
+                        {{/ifCond}}
+                    </tr>
+                    {{else}}
+                    <tr>
+                        <td>No results found.</td>
+                    </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+
+    {{#ifCond count '>' 10}}
+        <div class="text-center">
+            {{{pagination}}}
+        </div>
+    {{/ifCond}}
+</div>

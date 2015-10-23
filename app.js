@@ -21,5 +21,5 @@ var error = function(err, req, res, next) {
 require('./config/express')(app, error);
 require('./config/hbs');
 
-app.listen(config.port, '127.0.0.1');
+app.listen(config.port, '0.0.0.0');
 console.log('Magic is happening on port ' + config.port + '!');

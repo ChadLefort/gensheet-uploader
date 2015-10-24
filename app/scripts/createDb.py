@@ -9,11 +9,11 @@ from imports.sql.create import createTable
 from imports.sql.populate import populateTables
 
 # Database connection to get hull numbers.
-host = os.environ.get('PY_SCRIPT_DBHOST')
-port = int(os.environ.get('PY_SCRIPT_DBPORT'))
-user = os.environ.get('PY_SCRIPT_DBUSER')
-passwd = os.environ.get('PY_SCRIPT_DBPASSWORD')
-db = os.environ.get('PY_SCRIPT_DB')
+host = os.environ.get('PROD_DB_HOST')
+port = int(os.environ.get('PROD_DB_PORT'))
+user = os.environ.get('PROD_DB_USER')
+passwd = os.environ.get('PROD_DB_PASSWORD')
+db = os.environ.get('PROD_DB_DATABASE')
 
 hullsDb = MySQLdb.connect(host = host, port = port, user = user,  passwd = passwd, db = db, local_infile = 1)
 curOne = hullsDb.cursor()

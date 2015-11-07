@@ -5,7 +5,7 @@
 
 ### How do I get set up? ###
 
-* Have the following install:
+* Have the following installed:
   * Node.js & NPM
   * Python 2.7.10
   * MySQL

@@ -1,7 +1,6 @@
-# README #
+# Gensheet-uploader #
 
-* A simple application that allows users to add gensheets, view it's data, and generate other sheets based on gensheet data.
-* Version 1.0.0
+A simple application that allows users to add gensheets, view it's data, and generate other sheets based on gensheet data.
 
 ### How do I get set up? ###
 
@@ -26,7 +25,3 @@ sudo node app.js
 ### What is a gensheet? ###
 
 * A gensheet is an excel workbook that contains the data to generate the configuration for ABB PLCs.
-
-### Who do I talk to? ###
-
-* Repo owner: Chad Lefort (chadlefort@gmail.com)

@@ -5,8 +5,11 @@
 
 ### How do I get set up? ###
 
-* Make sure you have Node.js and NPM installed.
-* Python 2.7.10
+* Have the following install:
+  * Node.js & NPM
+  * Python 2.7.10
+  * MySQL
+* Run the db.sql in your MySQL server
 * Open up your terminal to where you want it installed and use npm to install all of the dependencies:
 
 ```
